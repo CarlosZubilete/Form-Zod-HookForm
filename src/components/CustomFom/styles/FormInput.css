@@ -1,0 +1,41 @@
+.form-group {
+  /* border: 1px solid red; */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  /* border: 1px solid red; */
+  text-align: start;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  color: #efefef;
+}
+
+.form-control {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #4a90e2;
+}
+
+.form-control.invalid {
+  border-color: #e74c3c;
+}
+
+.form-error {
+  position: absolute;
+  bottom: -1.7rem;
+  left: 0.3rem;
+  font-size: 0.75rem;
+  color: #e74c3c;
+  pointer-events: none;
+  white-space: nowrap;
+}
