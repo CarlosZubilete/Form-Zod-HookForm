@@ -1,21 +1,19 @@
-# 🎨 React Form with Zod Validation
+# React Form with Zod Validation
 
 A beautiful, modern React form component with Zod validation that you can use as a template for your projects. Features professional design, responsive layout, and smooth animations.
 
-![Form Preview](https://via.placeholder.com/800x400/667eea/ffffff?text=Modern+Form+Design)
+## Features
 
-## ✨ Features
+- **Modern Design System** - Professional glassmorphism UI with gradients
+- **Fully Responsive** - Works perfectly on all device sizes
+- **Form Validation** - Powered by Zod for robust type-safe validation
+- **Smooth Animations** - Beautiful transitions and hover effects
+- **Accessibility First** - WCAG compliant with keyboard navigation
+- **TypeScript Ready** - Full type safety with TypeScript
+- **Login/Register Toggle** - Dynamic form switching
+- **Professional Styling** - CSS custom properties and modern design patterns
 
-- 🎨 **Modern Design System** - Professional glassmorphism UI with gradients
-- 📱 **Fully Responsive** - Works perfectly on all device sizes
-- ✅ **Form Validation** - Powered by Zod for robust type-safe validation
-- 🎭 **Smooth Animations** - Beautiful transitions and hover effects
-- ♿ **Accessibility First** - WCAG compliant with keyboard navigation
-- 🎯 **TypeScript Ready** - Full type safety with TypeScript
-- 🔄 **Login/Register Toggle** - Dynamic form switching
-- 🎪 **Professional Styling** - CSS custom properties and modern design patterns
-
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -48,7 +46,7 @@ A beautiful, modern React form component with Zod validation that you can use as
    http://localhost:5173
    ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **React 18** - Modern React with hooks
 - **TypeScript** - Type safety and better DX
@@ -151,7 +149,7 @@ const customSchema = z.object({
 }
 ```
 
-## 🎯 Customization
+## Customization
 
 ### Colors
 
@@ -189,7 +187,7 @@ Customize the appearance by editing the CSS files:
 - **Tablet**: 768px - 1199px
 - **Mobile**: 320px - 767px
 
-## ♿ Accessibility Features
+## Accessibility Features
 
 - ✅ Keyboard navigation support
 - ✅ Screen reader compatibility
@@ -198,7 +196,7 @@ Customize the appearance by editing the CSS files:
 - ✅ Focus indicators
 - ✅ Semantic HTML structure
 
-## 🚀 Available Scripts
+## Available Scripts
 
 ```bash
 npm run dev          # Start development server
@@ -210,16 +208,6 @@ npm run lint         # Run ESLint
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to:
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## 🙏 Acknowledgments
 
