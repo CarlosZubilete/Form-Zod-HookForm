@@ -2,6 +2,8 @@
 
 A beautiful, modern React form component with Zod validation that you can use as a template for your projects. Features professional design, responsive layout, and smooth animations.
 
+👉 [Short video](https://www.youtube.com/watch?v=_Om5djzEZ3A)
+
 ## Features
 
 - **Modern Design System** - Professional glassmorphism UI with gradients
