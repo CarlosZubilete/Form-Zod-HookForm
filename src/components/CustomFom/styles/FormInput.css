@@ -1,110 +1,269 @@
-.form-container {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
-  /* background: linear-gradient(135deg, #4a90e2, #9013fe); */
-}
-
-.form-title {
-  color: #fff;
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
+/* Form Input Styles */
 .form-group {
+  /* border: 1px solid red; */
   position: relative;
   display: flex;
   flex-direction: column;
   margin-bottom: 1.5rem;
+  animation: fadeIn 0.4s ease-out;
 }
 
 .form-label {
-  text-align: start;
-  font-size: 0.9rem;
-  margin-bottom: 0.3rem;
-  color: #efefef;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  display: block;
+  transition: color 0.2s ease;
 }
 
 .form-control {
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  /* width: 100%; */
+  padding: 0.875rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   outline: none;
-  transition: border-color 0.3s;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.form-control::placeholder {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.form-control:hover {
+  border-color: var(--primary-light);
 }
 
 .form-control:focus {
-  border-color: #4a90e2;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  transform: translateY(-1px);
 }
 
 .form-control.invalid {
-  border-color: #e74c3c;
+  border-color: var(--border-error);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-control.invalid:focus {
+  border-color: var(--border-error);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
 }
 
 .form-error {
   position: absolute;
-  bottom: -1.7rem;
-  left: 0.3rem;
+  bottom: -1.8rem;
+  left: 0;
   font-size: 0.75rem;
-  color: #e74c3c;
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-.toggle {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #efefef;
-  cursor: pointer;
-  text-align: center;
-  transition: color 0.2s ease;
-}
-
-.toggle:hover {
-  color: #fff;
-}
-
-/* .form-wrapper {
+  color: var(--error-color);
+  font-weight: 500;
+  margin-top: 0.25rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 90vh;
-
+  gap: 0.25rem;
+  animation: slideIn 0.2s ease-out;
 }
 
+.form-error::before {
+  content: "⚠";
+  font-size: 0.7rem;
+}
 
+/* Input Icons and States */
+.form-control:valid:not(:placeholder-shown) {
+  border-color: var(--success-color);
+}
+
+.form-control:valid:not(:placeholder-shown):focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Loading State */
+.form-control:disabled {
+  background-color: var(--bg-tertiary);
+  color: var(--text-light);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Floating Label Effect */
+.form-group.floating .form-label {
+  position: absolute;
+  top: 0.875rem;
+  left: 1rem;
+  background-color: var(--bg-primary);
+  padding: 0 0.25rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  pointer-events: none;
+  transform-origin: left top;
+}
+
+.form-group.floating .form-control:focus + .form-label,
+.form-group.floating .form-control:not(:placeholder-shown) + .form-label {
+  transform: translateY(-1.5rem) scale(0.85);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Submit Button Styles */
 .btn-submit {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.875rem 1.5rem;
   margin-top: 1rem;
   border: none;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #4a90e2, #9013fe);
-  color: #fff;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: var(--text-white);
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-submit::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
 }
 
 .btn-submit:hover {
-  transform: scale(1.03);
-  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  background: linear-gradient(
+    135deg,
+    var(--primary-hover),
+    var(--secondary-color)
+  );
 }
 
+.btn-submit:hover::before {
+  left: 100%;
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--shadow-md);
+}
+
+/* Toggle Link Styles */
 .toggle {
-  margin-top: 1rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
   font-size: 0.9rem;
-  color: #efefef;
   cursor: pointer;
-  text-align: center;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
+  position: relative;
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.toggle::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: all 0.2s ease;
+  transform: translateX(-50%);
 }
 
 .toggle:hover {
-  color: #fff;
-} */
+  color: var(--primary-hover);
+  background-color: rgba(99, 102, 241, 0.1);
+  transform: translateY(-1px);
+}
+
+.toggle:hover::after {
+  width: 100%;
+}
+
+.toggle:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Button Container */
+.form-button-container {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-control {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .form-label {
+    font-size: 0.8rem;
+  }
+
+  .btn-submit {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .toggle {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .form-control {
+    padding: 0.625rem;
+    font-size: 0.9rem;
+  }
+
+  .form-label {
+    font-size: 0.75rem;
+  }
+
+  .btn-submit {
+    padding: 0.625rem 1rem;
+    font-size: 0.9rem;
+  }
+}

@@ -1,11 +1,12 @@
 import { Controller, type Control, type FieldError } from "react-hook-form";
-import { type FormValues } from "../schemas/form.schemaRegister";
+import { type FormValuesRegister } from "../schemas/form.schemaRegister";
 import "../styles/FormInput.css";
+import type { FormValuesLogin } from "../schemas/form.schemaLogin";
 
 interface Props {
-  name: keyof FormValues;
+  name: keyof (FormValuesRegister & FormValuesLogin);
   label: string;
-  control: Control<FormValues>;
+  control: Control<FormValuesRegister | FormValuesLogin>;
   type?: string;
   error?: FieldError;
 }

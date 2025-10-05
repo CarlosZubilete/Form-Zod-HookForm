@@ -1,3 +1,4 @@
+import "../styles/FormPage.css";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler } from "react-hook-form";
@@ -5,9 +6,8 @@ import {
   type FormValuesRegister,
   schemaRegister,
 } from "../schemas/form.schemaRegister";
-import { FormInput } from "../components/FormInput";
-import "../styles/FormPage.css";
 import { schemaLogin, type FormValuesLogin } from "../schemas/form.schemaLogin";
+import { FormInput } from "../components/FormInput";
 
 type FormValues = {
   name?: string;
@@ -20,7 +20,9 @@ export const FormPage = () => {
   const [isLogin, setIsLogin] = useState(false);
 
   const schema = isLogin ? schemaLogin : schemaRegister;
-
+  const defaultValues: FormValues = isLogin
+    ? { email: "", password: "" }
+    : { name: "", email: "", password: "", confirmPassword: "" };
   const {
     control,
     handleSubmit,
@@ -28,12 +30,7 @@ export const FormPage = () => {
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     mode: "onBlur", // when the form will be validated
-    defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    },
+    defaultValues,
   });
 
   const onSubmit: SubmitHandler<FormValuesRegister | FormValuesLogin> = (
@@ -43,15 +40,16 @@ export const FormPage = () => {
   };
 
   return (
-    <>
+    <div className="form-container animate-fade-in">
       <h2 className="form-title">
-        {isLogin ? "Iniciar Sesion" : "Crear un cuenta"}
+        {isLogin ? "Iniciar Sesión" : "Crear una cuenta"}
       </h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="form-container">
+
+      <form onSubmit={handleSubmit(onSubmit)}>
         {!isLogin && (
           <FormInput
             name="name"
-            label="Name"
+            label="Nombre completo"
             control={control}
             type="text"
             error={errors?.name}
@@ -60,7 +58,7 @@ export const FormPage = () => {
 
         <FormInput
           name="email"
-          label="Email"
+          label="Correo electrónico"
           control={control}
           type="email"
           error={errors.email}
@@ -68,7 +66,7 @@ export const FormPage = () => {
 
         <FormInput
           name="password"
-          label="Password"
+          label="Contraseña"
           control={control}
           type="password"
           error={errors.password}
@@ -77,24 +75,32 @@ export const FormPage = () => {
         {!isLogin && (
           <FormInput
             name="confirmPassword"
-            label="Confirm Password"
+            label="Confirmar contraseña"
             control={control}
             type="password"
             error={errors?.confirmPassword}
           />
         )}
 
-        <div>
-          <button type="submit">{isLogin ? "Registrar" : "Iniciar"}</button>
+        <div className="form-button-container">
+          <button type="submit" className="btn-submit">
+            {isLogin ? "Iniciar Sesión" : "Crear Cuenta"}
+          </button>
         </div>
-
-        <p>
-          {isLogin ? "¿No tienes cuenta?" : "¿Ya tienes cuenta?"}
-          <a className="toggle" onClick={() => setIsLogin(!isLogin)}>
-            {isLogin ? "Registrar" : "Iniciar"}
-          </a>
-        </p>
       </form>
-    </>
+
+      <div className="form-toggle-section">
+        <p className="form-toggle-text">
+          {isLogin ? "¿No tienes cuenta?" : "¿Ya tienes cuenta?"}
+        </p>
+        <button
+          type="button"
+          className="toggle"
+          onClick={() => setIsLogin(!isLogin)}
+        >
+          {isLogin ? "Crear cuenta" : "Iniciar sesión"}
+        </button>
+      </div>
+    </div>
   );
 };
