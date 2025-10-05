@@ -1,0 +1,8 @@
+import { z } from "zod";
+
+export const schemaLogin = z.object({
+  email: z.string().email("Invalid Email").min(1, "Email is required"),
+  password: z.string().min(6, "Password is required"),
+});
+
+export type FormValuesLogin = z.infer<typeof schemaLogin>;

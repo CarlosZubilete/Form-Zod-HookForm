@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const schema = z
+export const schemaRegister = z
   .object({
     name: z.string().min(1, "Name is required"),
     email: z.string().email("Invalid email").min(1, "Email is required"),
@@ -14,4 +14,4 @@ export const schema = z
     message: "Passwords do not match", // this is the error message.
   });
 
-export type FormValues = z.infer<typeof schema>;
+export type FormValuesRegister = z.infer<typeof schemaRegister>;

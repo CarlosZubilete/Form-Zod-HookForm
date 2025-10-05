@@ -1,5 +1,5 @@
 import { Controller, type Control, type FieldError } from "react-hook-form";
-import { type FormValues } from "../schemas/form.schema";
+import { type FormValues } from "../schemas/form.schemaRegister";
 import "../styles/FormInput.css";
 
 interface Props {
